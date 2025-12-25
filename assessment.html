@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="7 Levels of Self Assessment">
   <meta property="og:description" content="A 5-minute assessment to discover where your real work is. 7 levels. 7 questions. One honest look at yourself.">
-  <meta property="og:url" content="https://www.levelsofself.com/selfassessment">
+  <meta property="og:url" content="https://selfcheck.100levelup.com/assessment.html">
   <meta property="og:site_name" content="Levels of Self">
   
   <!-- Twitter Card -->
@@ -1492,7 +1492,7 @@
       });
       summary += `\n📍 Focus Area: Level ${lowest.level + 1} - ${levels[lowest.level].name}\n`;
       summary += `📈 Average: ${avg.toFixed(1)}/10\n\n`;
-      summary += `Take the assessment: www.levelsofself.com/selfassessment`;
+      summary += `Take the assessment: selfcheck.100levelup.com/assessment.html`;
       
       return summary;
     }
@@ -1500,7 +1500,7 @@
     // Share results using native share or modal
     function copyResults() {
       const summary = generateTextSummary();
-      const shareUrl = 'https://www.levelsofself.com/selfassessment';
+      const shareUrl = 'https://selfcheck.100levelup.com/assessment.html';
       const shareTitle = 'My 7 Levels of Self Assessment';
       
       // Try native share API first (mobile)
@@ -1520,7 +1520,7 @@
     }
     
     function showShareModal(summary) {
-      const shareUrl = encodeURIComponent('https://www.levelsofself.com/selfassessment');
+      const shareUrl = encodeURIComponent('https://selfcheck.100levelup.com/assessment.html');
       const shareText = encodeURIComponent(summary);
       const shareTitle = encodeURIComponent('My 7 Levels of Self Assessment');
       
