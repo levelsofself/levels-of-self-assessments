@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="7 Levels of Self - Quick Assessment">
   <meta property="og:description" content="1 minute. 3 questions. Find out where your real work is.">
-  <meta property="og:url" content="https://www.levelsofself.com/1-minute-self-assessment">
+  <meta property="og:url" content="https://selfcheck.100levelup.com/quick.html">
   <meta property="og:site_name" content="Levels of Self">
   
   <style>
@@ -621,7 +621,7 @@
       <div class="cta-section">
         <h3 class="cta-title">What are you missing?</h3>
         <p class="cta-text">The full assessment takes 5 minutes and shows you the complete pattern — including the levels most people avoid.</p>
-        <a href="https://www.levelsofself.com/selfassessment" class="cta-link">Take the Full Assessment</a>
+        <a href="https://selfcheck.100levelup.com/assessment.html" class="cta-link">Take the Full Assessment</a>
       </div>
       
       <!-- Game CTA -->
@@ -981,14 +981,14 @@
 
     function shareResults() {
       const avg = Math.round(Object.values(scores).reduce((a, b) => a + b, 0) / 3);
-      const summary = `I just took this — 1 minute, 3 questions.\n\nMy foundation score: ${avg}/10\n\nThink you know yourself? Take it:\nwww.levelsofself.com/1-minute-self-assessment`;
+      const summary = `I just took this — 1 minute, 3 questions.\n\nMy foundation score: ${avg}/10\n\nThink you know yourself? Take it:\nselfcheck.100levelup.com/quick.html`;
       
       // Try native share API first (mobile)
       if (navigator.share) {
         navigator.share({
           title: '7 Levels of Self',
           text: summary,
-          url: 'https://www.levelsofself.com/1-minute-self-assessment'
+          url: 'https://selfcheck.100levelup.com/quick.html'
         }).catch(() => {
           showShareModal(summary);
         });
@@ -998,7 +998,7 @@
     }
     
     function showShareModal(summary) {
-      const shareUrl = encodeURIComponent('https://www.levelsofself.com/1-minute-self-assessment');
+      const shareUrl = encodeURIComponent('https://selfcheck.100levelup.com/quick.html');
       const shareText = encodeURIComponent(summary);
       
       const modal = document.createElement('div');
@@ -1045,7 +1045,7 @@
     
     function copyAndClose() {
       const avg = Math.round(Object.values(scores).reduce((a, b) => a + b, 0) / 3);
-      const summary = `I just took this — 1 minute, 3 questions.\n\nMy foundation score: ${avg}/10\n\nThink you know yourself? Take it:\nwww.levelsofself.com/1-minute-self-assessment`;
+      const summary = `I just took this — 1 minute, 3 questions.\n\nMy foundation score: ${avg}/10\n\nThink you know yourself? Take it:\nselfcheck.100levelup.com/quick.html`;
       copyToClipboard(summary);
       closeShareModal();
     }
