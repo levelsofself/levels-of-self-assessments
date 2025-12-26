@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 Levels of Self Assessment</title>
+  <meta name="description" content="A framework for clarity. Discover which level needs your attention right now.">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="7 Levels Self Assessment - Discover Where Your Real Work Is">
+  <meta property="og:description" content="A framework for clarity. Discover which level needs your attention right now.">
+  <meta property="og:image" content="https://selfcheck.100levelup.com/og-assessment.png">
+  <meta property="og:url" content="https://selfcheck.100levelup.com/">
+  <meta property="og:site_name" content="Levels of Self">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="7 Levels Self Assessment - Discover Where Your Real Work Is">
+  <meta name="twitter:description" content="A framework for clarity. Discover which level needs your attention right now.">
+  <meta name="twitter:image" content="https://selfcheck.100levelup.com/og-assessment.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="512x512" href="https://100levelup.com/icon-512.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://100levelup.com/icon-192.png">
+  <link rel="apple-touch-icon" href="https://100levelup.com/apple-touch-icon.png">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .audio-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: all 0.2s;
+    }
+    .audio-toggle:hover {
+      background: #334155;
+      color: #fbbf24;
+    }
+    .audio-toggle svg {
+      width: 20px;
+      height: 20px;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f172a;
+      color: white;
+      min-height: 100vh;
+      padding: 60px 24px 24px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .container {
+      max-width: 540px;
+      width: 100%;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .level-text {
+      color: #64748b;
+    }
+    .progress-bar {
+      display: flex;
+      gap: 4px;
+    }
+    .progress-dot {
+      width: 32px;
+      height: 8px;
+      border-radius: 4px;
+      background: #334155;
+    }
+    .progress-dot.completed {
+      background: #f59e0b;
+    }
+    .progress-dot.current {
+      background: #fbbf24;
+    }
+    .level-name {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #fbbf24;
+      margin-bottom: 8px;
+    }
+    .fine-print {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .expandable-link {
+      color: #fbbf24;
+      font-size: 0.875rem;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .expandable-link:hover {
+      color: #f59e0b;
+    }
+    .expanded-content {
+      background: #1e293b;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      display: none;
+    }
+    .expanded-content.show {
+      display: block;
+    }
+    .question {
+      font-size: 1.25rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      margin-top: 16px;
+    }
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      color: #e2e8f0;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+    .scale-low {
+      text-align: left;
+      max-width: 45%;
+    }
+    .scale-high {
+      text-align: right;
+      max-width: 45%;
+    }
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .score-btn {
+      background: #1e293b;
+      border: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .score-btn:hover {
+      background: #f59e0b;
+      color: black;
+    }
+    .score-btn.selected {
+      background: #f59e0b;
+      color: black;
+    }
+    .reflection-section {
+      margin-top: 20px;
+    }
+    .reflection-label {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .textarea {
+      width: 100%;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 16px;
+      color: #e2e8f0;
+      font-size: 1rem;
+      font-family: inherit;
+      min-height: 80px;
+      margin-bottom: 20px;
+      resize: vertical;
+    }
+    .textarea:focus {
+      outline: none;
+      border-color: #f59e0b;
+    }
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+    .btn-secondary {
+      background: #1e293b;
+      color: white;
+    }
+    .btn-secondary:hover {
+      background: #334155;
+    }
+    .btn-primary {
+      background: #f59e0b;
+      color: black;
+    }
+    .btn-primary:hover {
+      background: #d97706;
+    }
+    .btn:disabled {
+      background: #334155;
+      color: #64748b;
+      cursor: not-allowed;
+    }
+    .btn-row {
+      display: flex;
+      gap: 12px;
+    }
+    .btn-row .btn {
+      flex: 1;
+    }
+    .btn-back {
+      background: transparent;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      flex: 0 0 auto;
+      width: auto;
+      padding: 16px 24px;
+    }
+    .btn-back:hover {
+      background: #1e293b;
+      color: white;
+    }
+    .card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .card-label {
+      font-size: 0.875rem;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+    .card-label.amber {
+      color: #fbbf24;
+    }
+    .card-text {
+      font-size: 1.1rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+    .results-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .score-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #334155;
+    }
+    .score-row:last-child {
+      border-bottom: none;
+    }
+    .score-row-label {
+      color: #94a3b8;
+    }
+    .score-row-value {
+      color: #fbbf24;
+      font-weight: bold;
+    }
+    .score-1 { color: #ef4444; }
+    .score-2 { color: #f97316; }
+    .score-3 { color: #f59e0b; }
+    .score-4 { color: #84cc16; }
+    .score-5 { color: #22c55e; }
+    .distinction-card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .distinction-text {
+      color: #e2e8f0;
+    }
+    .distinction-text strong {
+      color: #fbbf24;
+    }
+    .center {
+      text-align: center;
+    }
+    .footer {
+      color: #64748b;
+      font-size: 0.875rem;
+      margin-top: 16px;
+    }
+    .hidden {
+      display: none;
+    }
+    .start-screen {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .start-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fbbf24;
+      margin-bottom: 16px;
+    }
+    .start-subtitle {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .start-details {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+    .cta-section {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .cta-title {
+      color: #fbbf24;
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .cta-text {
+      color: #cbd5e1;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .cta-link {
+      display: inline-block;
+      background: #f59e0b;
+      color: black;
+      font-weight: bold;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cta-link:hover {
+      background: #d97706;
+    }
+    .insight-section {
+      margin-bottom: 24px;
+    }
+    .insight-title {
+      color: #fbbf24;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .insight-text {
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+    .level-breakdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      cursor: pointer;
+      padding: 16px 20px;
+      background: #1e293b;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      transition: all 0.2s;
+    }
+    .level-breakdown-header:hover {
+      background: #253344;
+      border-color: #475569;
+    }
+    .level-breakdown-header h3 {
+      color: #e2e8f0;
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .level-breakdown-toggle {
+      color: #fbbf24;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .level-breakdown-content {
+      display: none;
+    }
+    .level-breakdown-content.show {
+      display: block;
+    }
+    .level-insight {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+    .level-insight-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .level-insight-name {
+      color: #fbbf24;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .level-insight-score {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .level-insight-text {
+      color: #cbd5e1;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .level-insight-reflection {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #334155;
+    }
+    .level-insight-reflection-label {
+      color: #64748b;
+      font-size: 0.8rem;
+      margin-bottom: 6px;
+    }
+    .level-insight-reflection-text {
+      color: #94a3b8;
+      font-style: italic;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .progress-complete {
+      color: #64748b;
+      font-size: 0.875rem;
+      text-align: center;
+      margin-top: 16px;
+    }
+    .focus-level {
+      border: 2px solid #f59e0b;
+    }
+    .focus-badge {
+      background: #f59e0b;
+      color: black;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .action-btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid #334155;
+      background: #1e293b;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .action-btn:hover {
+      background: #334155;
+      border-color: #f59e0b;
+    }
+    .action-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+    .share-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #22c55e;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+    .share-toast.show {
+      opacity: 1;
+    }
+    @media print {
+      body {
+        background: white;
+        color: black;
+        padding: 20px;
+      }
+      .container {
+        max-width: 100%;
+      }
+      .action-buttons,
+      .cta-section,
+      .btn-secondary,
+      .share-toast,
+      .footer,
+      .level-breakdown-header {
+        display: none !important;
+      }
+      .card, .distinction-card, .level-insight {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        break-inside: avoid;
+      }
+      .results-title {
+        color: black;
+      }
+      .insight-title, .level-insight-name, .card-label.amber {
+        color: #b45309;
+      }
+      .card-text, .insight-text, .level-insight-text, .distinction-text {
+        color: #333;
+      }
+      .score-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+      }
+      .score-box.lowest {
+        border: 2px solid #b45309;
+      }
+      .level-breakdown-content {
+        display: block !important;
+      }
+      .level-insight.focus-level {
+        border: 2px solid #b45309;
+      }
+      .distinction-text strong {
+        color: #b45309;
+      }
+      .score-1 { color: #dc2626; }
+      .score-2 { color: #ea580c; }
+      .score-3 { color: #d97706; }
+      .score-4 { color: #65a30d; }
+      .score-5 { color: #16a34a; }
+    }
+    .scores-summary {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .score-box {
+      background: #1e293b;
+      border-radius: 8px;
+      padding: 12px 8px;
+      text-align: center;
+    }
+    .score-box-level {
+      font-size: 0.7rem;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    .score-box-value {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    .score-box.lowest {
+      border: 2px solid #f59e0b;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 48px 16px 16px 16px;
+      }
+      .header {
+        margin-bottom: 20px;
+      }
+      .progress-dot {
+        width: 24px;
+        height: 6px;
+      }
+      .level-name {
+        font-size: 1.75rem;
+      }
+      .fine-print {
+        font-size: 0.85rem;
+      }
+      .expanded-content {
+        padding: 12px;
+        font-size: 0.85rem;
+      }
+      .question {
+        font-size: 1.05rem;
+        margin-bottom: 16px;
+        margin-top: 12px;
+      }
+      .scale-labels {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+      }
+      .score-grid {
+        gap: 6px;
+      }
+      .score-btn {
+        font-size: 1rem;
+        padding: 12px;
+      }
+      .card {
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      .card-text {
+        font-size: 1rem;
+      }
+      .btn {
+        padding: 14px;
+        font-size: 0.95rem;
+      }
+      .btn-back {
+        padding: 14px 18px;
+      }
+      .textarea {
+        padding: 12px;
+        font-size: 0.95rem;
+        min-height: 70px;
+        margin-bottom: 16px;
+      }
+      .results-title {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+      }
+      .score-row {
+        padding: 10px 0;
+      }
+      .score-row-label {
+        font-size: 0.9rem;
+      }
+      .distinction-card {
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      .distinction-text {
+        font-size: 0.95rem;
+      }
+      .cta-section {
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      .cta-title {
+        font-size: 1.1rem;
+      }
+      .cta-text {
+        font-size: 0.9rem;
+      }
+      .cta-link {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+      }
+      .level-insight {
+        padding: 16px;
+        margin-bottom: 12px;
+      }
+      .level-insight-name {
+        font-size: 1rem;
+      }
+      .level-insight-text {
+        font-size: 0.9rem;
+      }
+      .scores-summary {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+      .score-box {
+        padding: 10px 6px;
+      }
+      .score-box-level {
+        font-size: 0.6rem;
+      }
+      .score-box-value {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Audio Toggle Button -->
+    <button class="audio-toggle" id="audioToggle" onclick="toggleAudio()" title="Toggle audio">
+      <svg id="audioOnIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+      </svg>
+      <svg id="audioOffIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+      </svg>
+    </button>
+
+    <!-- Audio Elements -->
+    <audio id="bgMusic" loop>
+      <source src="https://raw.githubusercontent.com/levelsofself/levels-of-self-assessments/main/slow-reverb.mp4" type="audio/mp4">
+    </audio>
+    <audio id="levelUpMusic" loop>
+      <source src="https://raw.githubusercontent.com/levelsofself/levels-of-self-assessments/main/level-up.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Start Screen -->
+    <div id="startScreen" class="start-screen">
+      <h1 class="start-title">7 Levels of Self</h1>
+      <p class="start-subtitle">A framework for clarity</p>
+      <div class="start-details">
+        <p>The next five minutes might change your life.</p>
+        <p>No one sees your answers but you.</p>
+      </div>
+      <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment</button>
+      <a href="https://www.levelsofself.com/post/the-7-levels-of-self-explained" target="_blank" style="display: block; color: #fbbf24; font-size: 0.9rem; margin-top: 16px; text-decoration: underline;">Learn about the 7 Levels first →</a>
+      <p class="footer">LevelsOfSelf.com</p>
+    </div>
+
+    <!-- Assessment Screen -->
+    <div id="assessment" class="hidden">
+      <div class="header">
+        <span class="level-text" id="levelIndicator">Level 1 of 7</span>
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      
+      <h1 class="level-name" id="levelName">Individual</h1>
+      <p class="fine-print" id="finePrint"></p>
+      <span class="expandable-link" id="expandableLink" onclick="toggleExpanded()">What is this?</span>
+      <div class="expanded-content" id="expandedContent"></div>
+      
+      <p class="question" id="questionText"></p>
+      
+      <div class="scale-labels">
+        <span class="scale-low" id="scaleLow">1 = Never</span>
+        <span class="scale-high" id="scaleHigh">10 = Always</span>
+      </div>
+      <div class="score-grid" id="scoreGrid"></div>
+      
+      <div class="reflection-section">
+        <p class="reflection-label" id="reflectionLabel">Why did you choose that number?</p>
+        <textarea class="textarea" id="reflectionInput" placeholder="Optional — but the honest answers matter most..."></textarea>
+      </div>
+      
+      <div class="btn-row">
+        <button class="btn btn-back hidden" id="backBtn" onclick="prevLevel()">← Back</button>
+        <button class="btn btn-primary" id="nextBtn" onclick="nextLevel()" disabled>Next: Family</button>
+      </div>
+      <p class="progress-complete" id="progressComplete"></p>
+    </div>
+    
+    <!-- Results Screen -->
+    <div id="results" class="hidden">
+      <h1 class="results-title">Your Assessment</h1>
+      
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="action-btn" onclick="copyResults()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+          Share Results
+        </button>
+        <button class="action-btn" onclick="downloadResults()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Download
+        </button>
+        <button class="action-btn" onclick="printResults()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          Print
+        </button>
+      </div>
+      
+      <!-- Score Summary Grid -->
+      <div class="scores-summary" id="scoresSummary"></div>
+      
+      <!-- Main Insight -->
+      <div class="card insight-section">
+        <h2 class="insight-title" id="mainInsightTitle"></h2>
+        <p class="insight-text" id="mainInsightText"></p>
+      </div>
+      
+      <!-- Pattern Analysis -->
+      <div class="card">
+        <p class="card-label amber">What the pattern reveals</p>
+        <p class="card-text" id="patternAnalysis"></p>
+      </div>
+
+      <!-- Level by Level Breakdown (Collapsible) -->
+      <div class="level-breakdown-header" onclick="toggleBreakdown()">
+        <h3>Level by Level Breakdown</h3>
+        <span class="level-breakdown-toggle" id="breakdownToggle">
+          <span id="toggleText">View Details</span>
+          <svg id="toggleIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="transition: transform 0.2s;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
+      </div>
+      <div class="level-breakdown-content" id="levelBreakdown"></div>
+      
+      <!-- Key Distinction -->
+      <div class="distinction-card">
+        <p class="card-label">Remember</p>
+        <p class="distinction-text"><strong style="color: #fbbf24;">Acceptance</strong> is acknowledging what is. <strong style="color: #f8fafc;">Agreement</strong> is endorsing it.</p>
+        <p style="color: #cbd5e1; margin-top: 12px;">You can fully accept where you are without agreeing to stay there. This is your starting point, not your destination.</p>
+      </div>
+
+      <!-- Game CTA -->
+      <div class="cta-section" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155;">
+        <h3 class="cta-title">Ready to practice?</h3>
+        <p class="cta-text">Play Level Up — an interactive game that helps you apply the 7 Levels in real scenarios.</p>
+        <a href="https://100levelup.com" target="_blank" class="cta-link" style="background: #22c55e;">Play Level Up</a>
+      </div>
+
+      <!-- Primary CTA -->
+      <div class="cta-section">
+        <h3 class="cta-title">You don't have to do this alone.</h3>
+        <p class="cta-text">Join the free monthly community session. Real people. Real conversations. No judgment, no fluff — just the work that actually changes things.</p>
+        <a href="https://www.levelsofself.com/service-page/free-mastermind-english" target="_blank" class="cta-link">Join the Community</a>
+      </div>
+      
+      <!-- Connect -->
+      <div style="background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 20px; text-align: center;">
+        <p style="color: #e2e8f0; font-size: 1rem; margin-bottom: 12px;">Questions? Reach out directly.</p>
+        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a href="https://wa.me/18184399770" target="_blank" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem; padding: 8px 16px; border: 1px solid #334155; border-radius: 6px; transition: all 0.2s;">WhatsApp</a>
+          <a href="https://www.facebook.com/people/Art-Pal/1153951241/" target="_blank" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem; padding: 8px 16px; border: 1px solid #334155; border-radius: 6px; transition: all 0.2s;">Facebook</a>
+        </div>
+      </div>
+      
+      <div class="center">
+        <!-- Bottom Action Buttons -->
+        <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;">
+          <button class="action-btn" onclick="copyResults()" style="flex: 0 0 auto;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+            </svg>
+            Share
+          </button>
+          <button class="action-btn" onclick="downloadResults()" style="flex: 0 0 auto;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Download
+          </button>
+          <button class="action-btn" onclick="printResults()" style="flex: 0 0 auto;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            Print
+          </button>
+        </div>
+        <button class="btn btn-secondary" onclick="restart()">Take Again</button>
+        <p style="color: #94a3b8; margin-top: 16px; font-size: 0.95rem;">Come back in 30 days. See what shifts when you commit to the work.</p>
+        <p class="footer">LevelsOfSelf.com</p>
+        <p style="color: #475569; font-size: 0.8rem; margin-top: 24px; line-height: 1.6;">If you're in crisis or need immediate support, you're not alone.<br><a href="https://988lifeline.org" target="_blank" style="color: #64748b;">988 Suicide & Crisis Lifeline</a> — call or text 988, anytime.</p>
+      </div>
+    </div>
+    
+    <!-- Share Toast -->
+    <div class="share-toast" id="shareToast">Results copied to clipboard!</div>
+  </div>
+
+  <script>
+    const levels = [
+      {
+        level: 1,
+        name: "Individual",
+        finePrint: "Your relationship with yourself. Daily practices, honesty, self-care.",
+        expandedContent: "Level 1 is the foundation. Before you can show up for anyone else, you have to show up for yourself. This means having non-negotiables - things you do for yourself daily, no matter what. It's not selfish. It's required. If this level isn't solid, everything above it is unstable.",
+        question: "Do you have daily non-negotiables for yourself - and do you actually do them?",
+        scaleLow: "1 = Never",
+        scaleHigh: "10 = Daily without fail",
+        insights: {
+          1: "You don't have non-negotiables yet. Every day feels reactive — you respond to what life throws at you. That's not a character flaw. It's often what happens when survival has taken everything. But here's what's true: you're here, taking this assessment. That's a first step. One small commitment to yourself — even five minutes a day — can become the anchor everything else gets built on.",
+          2: "You've tried to build a routine. It hasn't stuck. Life interrupts, and you stop. That's not weakness — it's what happens when no one ever taught you that you matter enough to show up for. You do matter. The work now is finding one thing so small you can't fail at it, and letting that be your beginning.",
+          3: "You do things for yourself sometimes — when you remember, when there's space. That's more than nothing. But 'sometimes' keeps you in survival mode. You deserve more than survival. What would it look like to choose one thing that's just for you, and protect it?",
+          4: "Some weeks you show up for yourself. Some weeks disappear. You haven't figured out the pattern yet. That's okay — patterns take time to see. The fact that you're looking is what matters. This framework can help you find what's been invisible.",
+          5: "You're in the middle. Not failing, not thriving. Comfortable enough to stay, uncomfortable enough to know something's missing. This is actually a powerful place — you have enough stability to build, and enough discomfort to be motivated. The question is: what's one thing you're ready to commit to?",
+          6: "You have practices, but they bend under pressure. When things get hard, you abandon yourself first. That's a survival pattern, not a truth about who you are. Real non-negotiables get built slowly, with support. You don't have to do this alone.",
+          7: "You're mostly consistent. Most days, you show up for yourself. That's real progress. The next edge isn't doing more — it's going deeper. Are your practices building the person you want to become, or just maintaining where you are?",
+          8: "You have a solid foundation. Your routines are real. The question now is presence — are you actually there when you do them, or going through the motions? Transformation happens when practice meets awareness.",
+          9: "You're disciplined. You show up. The question at this level is whether it's service or control. There's a difference between structure that supports you and rigidity that protects you from feeling. Which one is it?",
+          10: "You say you've mastered this level. Maybe you have. Mastery here means complete honesty with yourself — not just about what you do, but about who you are when no one's watching. If that's true, you're ready to build upward."
+        }
+      },
+      {
+        level: 2,
+        name: "Family",
+        finePrint: "Your immediate family — spouse, kids, or the family you live with. If you're estranged or have no family, this is about your closest relationships.",
+        expandedContent: "Level 2 is your inner circle. If you're married, this is your spouse and children. If you're single, this is the family you were born into or live with. If you're estranged from family or don't have one, this level is about whoever is closest to you — a partner, a roommate, or even acknowledging the absence. You can't skip to helping the community if things are incomplete in your closest relationships.",
+        question: "Do you check in with the people closest to you — individually and intentionally?",
+        scaleLow: "1 = Never",
+        scaleHigh: "10 = Consistently with each person",
+        insights: {
+          1: "You don't check in with the people closest to you. Maybe there's no one close right now. Maybe the distance feels safer. Maybe connection was never modeled for you. Whatever the reason, you're not broken — you're protecting yourself. But protection that keeps everyone out also keeps you alone. When you're ready, even one honest conversation can begin to change things.",
+          2: "Connection happens by accident, not intention. When it's good, it's good. When it's not, you wait. That waiting is often learned — maybe you learned that reaching out wasn't safe, or that your needs didn't matter. They do. The question is: what would it take to reach out first, just once?",
+          3: "You talk, but about logistics — who's doing what, when, where. The deeper stuff gets avoided. That's often because depth feels dangerous. Maybe it was, once. But avoiding it now keeps you on the surface with the people who matter most. What's one thing you've been afraid to say?",
+          4: "You address things when there's a problem. That's reactive, not connected. By the time you check in, something's already broken. This isn't about blame — it's about seeing the pattern. What would it look like to reach out before things break?",
+          5: "You're present, but not fully. You're in the room, but not always in the relationship. There's a difference between being there and being available. The people closest to you might not know which one they're getting. The work is closing that gap — not perfectly, but honestly.",
+          6: "You check in with some people, but not all. There's someone you're avoiding — or someone avoiding you. That gap is information. It's showing you where the real work is. You don't have to fix it today, but you do have to see it.",
+          7: "Things are mostly good. But 'mostly good' can hide what's incomplete. The person you assume is fine — have you actually asked? Assumption isn't connection. One real conversation might reveal something important.",
+          8: "You're intentional about your closest relationships. You make time. The question is whether it's enough time, or scheduled time. There's a difference between prioritizing people and fitting them in. Where's the edge for you?",
+          9: "Your inner circle is a priority, and it shows. The question now: is the connection mutual? Are they choosing you as much as you're choosing them? Real intimacy goes both ways.",
+          10: "You say this is handled. Maybe it is. But the people closest to us are the easiest to take for granted. When's the last time you asked them — really asked — how they feel about you?"
+        }
+      },
+      {
+        level: 3,
+        name: "Groups",
+        finePrint: "Friends, coworkers, teams, extended family — people outside your immediate circle. If you're isolated, this is about that too.",
+        expandedContent: "Level 3 is about the groups you're part of — or the absence of them. Friends, coworkers, teams, social circles. If you're married, your extended family (parents, siblings, cousins) belongs here. If you're isolated or don't have groups right now, this level asks why, and whether that's by choice or circumstance. The core question: Are you being yourself, or performing a version of yourself to fit in — or hiding entirely?",
+        question: "Do you show up as yourself in groups — or do you hide, perform, or avoid them altogether?",
+        scaleLow: "1 = I hide, perform, or avoid",
+        scaleHigh: "10 = Fully myself in every group",
+        insights: {
+          1: "You disappear in groups — or you avoid them entirely. Maybe you perform whatever version of yourself feels safest. Maybe you've pulled back completely because people have hurt you. That's exhausting, and lonely. But here's what's important: that pattern kept you safe once. It made sense. The question now is whether it's still serving you, or keeping you hidden from the people who might actually see you. Connection is possible. It just has to start small.",
+          2: "You show up, but not as yourself. You've learned what each group wants, and you give them that. The real you stays hidden. That's protection — and it probably saved you at some point. But protection becomes a prison when you can't take it off. What would it feel like to let one person see you?",
+          3: "You're different in different rooms. Some of that is natural — we all adapt. But some of it is hiding. You might not even know the difference anymore. The work is learning to notice: when am I adjusting, and when am I disappearing?",
+          4: "You let parts of yourself show, depending on who's watching. But there's always something held back. The question isn't whether that's wrong — it's what you're afraid they'd see. That fear is worth looking at.",
+          5: "You're half-in. Close enough to belong, far enough to escape if needed. That's a hedge — and hedges make sense when trust has been broken before. But they also keep you stuck. What would full presence look like, even in one group?",
+          6: "You're mostly yourself, except in certain rooms. There's at least one place where you still perform. That room is telling you something — maybe about them, maybe about you. Either way, it's worth examining.",
+          7: "You're consistent in most places. But consistency isn't the same as authenticity. Are you being yourself, or being the version of yourself you've decided is acceptable? There's a difference.",
+          8: "You show up real. You've stopped performing for most people. The remaining question: do you let them in, or do you just stop pretending while keeping the walls up? Authenticity and vulnerability aren't the same thing.",
+          9: "You're authentic, and it shows. The edge now: do you let the group serve you? Or do you stay in the giving role so you never have to receive? Receiving is its own kind of courage.",
+          10: "You say you're fully yourself everywhere. That's rare and powerful. Just make sure 'fully yourself' isn't another performance — the performance of someone who has it all figured out."
+        }
+      },
+      {
+        level: 4,
+        name: "Community",
+        finePrint: "Where you belong beyond personal relationships — neighborhood, church, industry, causes, or any group you're part of.",
+        expandedContent: "Level 4 is broader than your personal circles. This is your neighborhood, your city, your professional industry, your church, gym, or organization. It includes specific communities you identify with — artists, entrepreneurs, musicians, activists, parents, hobbyists. Whether you're working, retired, or still figuring it out, the question is the same: do you have a role, and do you respect the roles of others?",
+        question: "Do you know your role in your community — and do you respect the roles of others?",
+        scaleLow: "1 = No clear role",
+        scaleHigh: "10 = Clear role, respect others'",
+        insights: {
+          1: "You have no role in any community right now. That might be by choice — or it might be because you've never felt like you belonged anywhere. Either way, something is missing. The good news: community can be built. It starts with showing up somewhere, even once, even imperfectly.",
+          2: "You're on the edges. You attend, but you don't participate. You're in the community, but not of it. That's a spectator position. It's safe — but it's also isolating. What would it look like to take one small step toward the center?",
+          3: "You help when asked, but you haven't claimed a role. You're waiting to be chosen. That waiting might feel humble, but it's also a way of staying invisible. Leaders aren't chosen — they step forward. You can start small.",
+          4: "You have a vague sense of what you could offer, but you haven't committed. You're keeping your options open. That's another way of staying small. What if you picked one community and gave it something real?",
+          5: "You participate, but you haven't owned a role. You're useful, but not essential. That's comfortable — and also limiting. The next step isn't doing more. It's committing more.",
+          6: "You have a role, but you're not sure it's the right one. You might be doing what looks good instead of what's actually needed. That's worth examining. Service isn't performance — it's responsiveness.",
+          7: "You know your role. The question now: do you trust others in theirs? Leadership at this level means letting go — trusting the community to function without your control.",
+          8: "You're contributing meaningfully. The question is sustainability: are you serving from overflow, or depleting yourself? You can't pour from an empty cup forever.",
+          9: "You're a leader in your community. The edge now is whether you're building other leaders or creating dependency on yourself. Real leadership makes itself unnecessary.",
+          10: "You say you've mastered this level. Real mastery means the community thrives whether you're there or not. Is that true? If so, you're ready to look at the larger systems you're part of."
+        }
+      },
+      {
+        level: 5,
+        name: "Society",
+        finePrint: "Your nation and its systems - government, economy, culture. How you relate to the way things are.",
+        expandedContent: "Level 5 is about your relationship with society - your nation, its people, its systems. Government, economy, laws, culture. The key at this level is seeing what is so - not what you wish was true, not what you're fighting against, but reality as it actually exists. You can't change what you won't first accept.",
+        question: "Do you accept how your society operates - or do you spend energy fighting against it?",
+        scaleLow: "1 = Constant resistance",
+        scaleHigh: "10 = Clear acceptance of reality",
+        insights: {
+          1: "You're at war with how things are. Every day feels like a fight against systems, structures, people in power. That fight might be completely justified — the world has real injustice. But constant resistance costs you. It drains energy that could go toward building. Acceptance isn't agreement. It's not giving up. It's seeing clearly so you can act effectively.",
+          2: "You resist more than you accept. Reality feels like an enemy. That resistance might come from real wounds — systems that failed you, people who didn't protect you. Your anger makes sense. But resistance alone won't change anything. What would it look like to accept what is, and then work from there?",
+          3: "You oscillate between fighting and withdrawing. Neither is acceptance. Acceptance isn't surrender — it's starting from what's true. When you can see reality without needing it to be different, you can finally begin to change it.",
+          4: "You see problems everywhere. You're probably right — there are problems everywhere. But seeing problems isn't the same as accepting reality. Acceptance means acknowledging what is so you can work with it, not against it.",
+          5: "You accept some things, resist others. The things you resist are usually the ones that threaten your identity or beliefs. That's human. The edge is learning to see clearly even when it's uncomfortable — especially when it's uncomfortable.",
+          6: "You're mostly at peace with how things work, but there are exceptions. Those exceptions reveal something — attachments, wounds, beliefs. They're worth examining, not because they're wrong, but because they're information.",
+          7: "You accept most of reality. But accepting isn't agreeing. You can fully see what is and still work to change it. The question is whether you're acting on what you see, or just judging those who don't see it yet.",
+          8: "You see clearly. You don't waste energy fighting reality. But clarity can become superiority — judging those who don't see what you see. Watch for that. Clarity is a tool, not a status.",
+          9: "You've made peace with society as it is. The edge: is this true acceptance, or detachment disguised as wisdom? Acceptance without engagement is just avoidance with better branding.",
+          10: "You say you fully accept reality. That's rare. Just make sure acceptance hasn't become cynicism or apathy. Real acceptance is alive — it sees what is and still chooses to engage."
+        }
+      },
+      {
+        level: 6,
+        name: "World",
+        finePrint: "Beyond your immediate world — other nations, other cultures, humanity as a whole. How connected do you feel?",
+        expandedContent: "Level 6 is about the bigger picture. Other countries, other cultures, humanity beyond your borders. This isn't about being an activist or saving the world. It's about recognizing that you're part of something larger than your own life. When you're just surviving, this can feel irrelevant — and that's okay. But as your foundation strengthens, this connection naturally expands.",
+        question: "How much does what happens beyond your world — to people you'll never meet — matter to you?",
+        scaleLow: "1 = Doesn't affect me",
+        scaleHigh: "10 = Deeply connected",
+        insights: {
+          1: "What happens in other countries doesn't feel like it affects you. That's understandable — when you're struggling with your own life, the world can feel impossibly far away. But here's what's true: you're already connected, whether you feel it or not. The price you pay, the air you breathe, the safety of your street — it's all linked. Seeing that connection isn't a burden. It's an expansion of who you are.",
+          2: "You're aware that other places exist, but you don't feel connected to them. Your concern stops at your borders. That's not wrong — it's just limited. Connection to the world starts small. It can start with curiosity.",
+          3: "You care when it's in the news. Disasters get your attention, then fade. That's human — our attention follows urgency. But that's reaction, not connection. What would it look like to stay connected even when the headlines move on?",
+          4: "You feel something, sometimes. When it's big enough, close enough, or affects people like you. Connection that depends on conditions isn't wrong — it's just incomplete. The work is widening the circle.",
+          5: "You're torn. Part of you feels connected to the world. Part of you thinks it's too big, too far, too overwhelming. So you engage halfway. That's honest. The question is: what would full engagement look like for you, given your current capacity?",
+          6: "You care, and sometimes you act. But your action is inconsistent — when you're inspired, when it's convenient, when someone asks. What would sustained, sustainable engagement look like? Not sacrifice. Just presence.",
+          7: "You see yourself as part of something bigger. The question is whether that translates to how you live. Vision without action is just sentiment. What's one way your sense of connection could become concrete?",
+          8: "You're engaged with the world. The question is sustainability: are you burning yourself out trying to help what's outside while neglecting what's inside? The world needs your wholeness, not your sacrifice. You can care deeply and still take care of yourself.",
+          9: "You live connected to the world. The edge here is peace: are you at peace with what you can't control? Global connection without acceptance leads to despair. You can hold both — connection and surrender.",
+          10: "You say you're deeply connected to humanity. That's beautiful — if it's real. Make sure it's grounded in daily action, not just philosophy. Connection lives in the small choices, not just the big feelings."
+        }
+      },
+      {
+        level: 7,
+        name: "Generations",
+        finePrint: "What you're building that will outlast you — whether that's family, work, impact, or simply how you live.",
+        expandedContent: "Level 7 is about legacy. This isn't about fame, wealth, or waiting until you're old. It's about sustainability. Are you living in a way that creates something beyond yourself? That could be children, a business, a community, art, or simply breaking cycles and modeling a different way of being. Will what you create — in any form — survive without you?",
+        question: "Are you building something that will outlast you?",
+        scaleLow: "1 = Nothing will remain",
+        scaleHigh: "10 = Building something lasting",
+        insights: {
+          1: "Right now, nothing feels like it will outlast you. You might be living day to day, just trying to survive. That's not failure — sometimes survival is the work. But here's what's also true: your life already matters. The way you treat people, the moments you share, the choices you make — they ripple forward whether you see it or not. Legacy isn't always a building. Sometimes it's how you made someone feel. Sometimes it's a cycle you refused to repeat.",
+          2: "You haven't thought much about legacy. The future feels too far away, too abstract — maybe because the present takes everything you have. That's okay. But know this: the people who come after you will inherit something from how you lived. It doesn't have to be wealth or fame. It can be healing. It can be breaking a cycle. It can be one good choice repeated.",
+          3: "You think about legacy sometimes. What you'd leave behind, what would matter. But thinking isn't building. Legacy is a construction, not a concept. The question is: what's one small thing you could start building today?",
+          4: "You want to build something, but you haven't started. Or you started and stopped. That gap between intention and action — that's where legacy often dies. But it's also where it can be reborn. One step forward counts.",
+          5: "You're building something, but you're not sure it will last. It might depend too much on you — your presence, your effort, your control. That's a project, not a legacy. The shift is moving from 'what I do' to 'what continues without me.'",
+          6: "You're making progress. Something exists that wouldn't exist without you. That matters. The question now: will it survive without you? If you disappeared tomorrow, what would continue? That's the test.",
+          7: "You're building intentionally. You think about what lasts. The edge is motive: are you building for your ego or for others? Legacy that's about being remembered isn't really legacy. Legacy that serves others is.",
+          8: "You're creating something sustainable. Others are involved. It could continue without you. The question now is whether you're letting it. Are you still holding too tight, or are you learning to let go?",
+          9: "You've built something real. It exists beyond you. The final question: is it what you actually want to leave? Or is it what you thought you should build? Alignment matters as much as impact.",
+          10: "You say you're building something lasting. Maybe you are. But legacy isn't determined by you — it's determined by what remains when you're gone. Time will tell. In the meantime, keep building with integrity."
+        }
+      }
+    ];
+
+    let currentLevel = 0;
+    let scores = {};
+    let reflections = {};
+    let expandedVisible = false;
+    let currentScore = null;
+    let breakdownVisible = false;
+
+    function getScoreTier(score) {
+      if (score <= 2) return 1;
+      if (score <= 4) return 2;
+      if (score <= 6) return 3;
+      if (score <= 8) return 4;
+      return 5;
+    }
+
+    function getScoreClass(score) {
+      const tier = getScoreTier(score);
+      return `score-${tier}`;
+    }
+
+    function startAssessment() {
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('assessment').classList.remove('hidden');
+      
+      // Start background music
+      const bgMusic = document.getElementById('bgMusic');
+      bgMusic.volume = 0.3;
+      bgMusic.play().catch(() => {});
+      
+      updateDisplay();
+    }
+
+    function toggleExpanded() {
+      const content = document.getElementById('expandedContent');
+      const link = document.getElementById('expandableLink');
+      expandedVisible = !expandedVisible;
+      if (expandedVisible) {
+        content.classList.add('show');
+        link.textContent = 'Hide details';
+      } else {
+        content.classList.remove('show');
+        link.textContent = 'What is this?';
+      }
+    }
+
+    function toggleBreakdown() {
+      const content = document.getElementById('levelBreakdown');
+      const toggleText = document.getElementById('toggleText');
+      const toggleIcon = document.getElementById('toggleIcon');
+      breakdownVisible = !breakdownVisible;
+      if (breakdownVisible) {
+        content.classList.add('show');
+        toggleText.textContent = 'Hide Details';
+        toggleIcon.style.transform = 'rotate(180deg)';
+      } else {
+        content.classList.remove('show');
+        toggleText.textContent = 'View Details';
+        toggleIcon.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    function renderProgressBar() {
+      const bar = document.getElementById('progressBar');
+      bar.innerHTML = '';
+      for (let i = 0; i < 7; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'progress-dot';
+        dot.id = `dot-${i}`;
+        bar.appendChild(dot);
+      }
+      updateProgressBar();
+    }
+
+    function updateProgressBar() {
+      for (let i = 0; i < 7; i++) {
+        const dot = document.getElementById(`dot-${i}`);
+        dot.className = 'progress-dot';
+        if (scores[i] !== undefined) dot.classList.add('completed');
+        if (i === currentLevel && scores[i] === undefined) dot.classList.add('current');
+      }
+    }
+
+    function renderScoreButtons() {
+      const grid = document.getElementById('scoreGrid');
+      grid.innerHTML = '';
+      for (let i = 1; i <= 10; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'score-btn';
+        btn.textContent = i;
+        btn.id = `score-btn-${i}`;
+        btn.onclick = () => selectScore(i);
+        grid.appendChild(btn);
+      }
+    }
+
+    function selectScore(score) {
+      currentScore = score;
+      
+      // Update button states
+      for (let i = 1; i <= 10; i++) {
+        const btn = document.getElementById(`score-btn-${i}`);
+        btn.classList.remove('selected');
+      }
+      document.getElementById(`score-btn-${score}`).classList.add('selected');
+      
+      // Enable next button
+      document.getElementById('nextBtn').disabled = false;
+    }
+
+    function updateDisplay() {
+      const level = levels[currentLevel];
+      document.getElementById('levelIndicator').textContent = `Level ${level.level} of 7`;
+      document.getElementById('levelName').textContent = level.name;
+      document.getElementById('finePrint').textContent = level.finePrint;
+      document.getElementById('expandedContent').textContent = level.expandedContent;
+      document.getElementById('questionText').textContent = level.question;
+      document.getElementById('scaleLow').textContent = level.scaleLow;
+      document.getElementById('scaleHigh').textContent = level.scaleHigh;
+      
+      // Reset expanded state
+      expandedVisible = false;
+      document.getElementById('expandedContent').classList.remove('show');
+      document.getElementById('expandableLink').textContent = 'What is this?';
+      
+      // Handle back button visibility
+      const backBtn = document.getElementById('backBtn');
+      if (currentLevel > 0) {
+        backBtn.classList.remove('hidden');
+      } else {
+        backBtn.classList.add('hidden');
+      }
+      
+      // Restore previous score if going back
+      if (scores[currentLevel] !== undefined) {
+        currentScore = scores[currentLevel];
+        for (let i = 1; i <= 10; i++) {
+          const btn = document.getElementById(`score-btn-${i}`);
+          btn.classList.remove('selected');
+        }
+        document.getElementById(`score-btn-${currentScore}`).classList.add('selected');
+        document.getElementById('nextBtn').disabled = false;
+      } else {
+        // Reset score selection for new level
+        currentScore = null;
+        for (let i = 1; i <= 10; i++) {
+          const btn = document.getElementById(`score-btn-${i}`);
+          btn.classList.remove('selected');
+        }
+        document.getElementById('nextBtn').disabled = true;
+      }
+      
+      // Restore previous reflection if going back
+      if (reflections[currentLevel] !== undefined) {
+        document.getElementById('reflectionInput').value = reflections[currentLevel];
+      } else {
+        document.getElementById('reflectionInput').value = '';
+      }
+      
+      // Update button text
+      const nextBtn = document.getElementById('nextBtn');
+      if (currentLevel < 6) {
+        nextBtn.textContent = `Next: ${levels[currentLevel + 1].name}`;
+      } else {
+        nextBtn.textContent = 'See My Results';
+      }
+      
+      // Update progress text
+      const completed = Object.keys(scores).length;
+      if (completed === 0) {
+        document.getElementById('progressComplete').textContent = '';
+      } else {
+        document.getElementById('progressComplete').textContent = `${completed} of 7 complete`;
+      }
+      
+      updateProgressBar();
+    }
+
+    function prevLevel() {
+      // Save current state before going back
+      if (currentScore !== null) {
+        scores[currentLevel] = currentScore;
+      }
+      const reflection = document.getElementById('reflectionInput').value.trim();
+      if (reflection) {
+        reflections[currentLevel] = reflection;
+      }
+      
+      currentLevel--;
+      saveProgress();
+      updateDisplay();
+      window.scrollTo(0, 0);
+    }
+
+    function nextLevel() {
+      // Save score and reflection
+      scores[currentLevel] = currentScore;
+      const reflection = document.getElementById('reflectionInput').value.trim();
+      if (reflection) {
+        reflections[currentLevel] = reflection;
+      } else {
+        delete reflections[currentLevel];
+      }
+      
+      if (currentLevel < 6) {
+        currentLevel++;
+        saveProgress();
+        updateDisplay();
+        window.scrollTo(0, 0);
+      } else {
+        // Clear saved progress on completion
+        localStorage.removeItem('levelsOfSelfProgress');
+        showResults();
+      }
+    }
+
+    function findLowestLevel() {
+      let lowest = { level: 0, score: 11 };
+      
+      // First pass: find the lowest score
+      Object.entries(scores).forEach(([level, score]) => {
+        if (score < lowest.score) {
+          lowest = { level: parseInt(level), score };
+        }
+      });
+      
+      // Second pass: if tied, prefer foundation levels (0, 1, 2)
+      const lowestScore = lowest.score;
+      const tied = Object.entries(scores)
+        .filter(([level, score]) => score === lowestScore)
+        .map(([level]) => parseInt(level));
+      
+      if (tied.length > 1) {
+        // Prefer lower level numbers (foundation first)
+        lowest.level = Math.min(...tied);
+      }
+      
+      return lowest;
+    }
+
+    function generatePatternAnalysis() {
+      const scoreValues = Object.values(scores);
+      const avg = scoreValues.reduce((a, b) => a + b, 0) / 7;
+      const lowest = findLowestLevel();
+      
+      // Foundation vs outer world
+      const foundationAvg = (scores[0] + scores[1] + scores[2]) / 3;
+      const middleAvg = (scores[3] + scores[4]) / 2;
+      const outerAvg = (scores[5] + scores[6]) / 2;
+      
+      // Check for specific patterns
+      const allHigh = avg >= 8;
+      const allLow = avg <= 3;
+      const foundationWeak = foundationAvg < 5 && (middleAvg > 6 || outerAvg > 6);
+      const foundationStrong = foundationAvg > 7 && outerAvg < 5;
+      const uShape = (scores[0] > 6 && scores[6] > 6) && (scores[3] < 5 || scores[4] < 5);
+      const decline = scores[0] > scores[3] && scores[3] > scores[6];
+      
+      let pattern = "";
+      
+      if (allHigh) {
+        pattern = `You scored high across the board. Two possibilities: either you've done serious work on yourself, or there's some inflation happening. Only you know which. If these scores are real, the question isn't what to fix — it's what to build next. If they're aspirational, start with the one that stings most when you read it back.`;
+      } else if (allLow) {
+        pattern = `Low scores across the board. That takes real honesty — most people inflate their numbers to protect themselves. You didn't. That courage is your foundation. Here's what matters now: don't try to fix everything at once. Start with Level 1. Find one small thing you can do for yourself every day — even five minutes. That single anchor will create stability for everything else. This is exactly where transformation begins. You just have to be willing to take the first step, and trust the process.`;
+      } else if (foundationWeak) {
+        pattern = `Your scores show more attention to the outer levels than your foundation. This is common - it's easier to focus on community, society, or legacy than to face yourself and your family. But the framework is clear: you can't sustainably operate at higher levels without a solid base. Your real work is at Level ${lowest.level + 1}: ${levels[lowest.level].name}. Not because the other levels don't matter - but because this one is underneath them all.`;
+      } else if (foundationStrong) {
+        pattern = `Your foundation is strong - Individual, Family, Groups are solid. But you've pulled back from the broader levels. That's not wrong, but ask yourself: is it intentional, or avoidance? Sometimes we perfect what's close to avoid what's uncomfortable. Your edge is Level ${lowest.level + 1}: ${levels[lowest.level].name}. That's where growth is waiting.`;
+      } else if (uShape) {
+        pattern = `Interesting pattern: you're strong at the personal level and thinking about legacy, but the middle is weaker - Community and Society. That gap matters. You can't build a lasting legacy while disconnected from the systems and communities around you. Level ${lowest.level + 1}: ${levels[lowest.level].name} is asking for your attention.`;
+      } else if (decline) {
+        pattern = `Your scores decrease as the levels expand outward. That's honest - most people are more comfortable with what's close than what's far. The work isn't to judge yourself for that. The work is to decide if that's where you want to stay. Your lowest score is Level ${lowest.level + 1}: ${levels[lowest.level].name}.`;
+      } else {
+        pattern = `Your lowest score is Level ${lowest.level + 1}: ${levels[lowest.level].name}. That's where your attention belongs. Not because the other levels don't matter - but because you can't skip ahead. The framework works when you master each level before climbing. Start there. The others will follow.`;
+      }
+      
+      return pattern;
+    }
+
+    function generateMainInsight() {
+      const avg = Object.values(scores).reduce((a, b) => a + b, 0) / 7;
+      const lowest = findLowestLevel();
+      
+      if (avg >= 8) {
+        return {
+          title: "High Self-Assessment",
+          text: "You rated yourself highly across most levels. The question worth sitting with: Is this where you truly are, or where you want to be? High scores can reflect years of real work — or they can reflect a story you're telling yourself. Either way, your lowest point is your clearest signal for where to look next."
+        };
+      } else if (avg >= 6) {
+        return {
+          title: "Solid Ground",
+          text: `You're above average on most levels, which suggests real self-awareness and effort. But 'above average' can become a comfort zone. Your edge is Level ${lowest.level + 1} (${levels[lowest.level].name}). That's not where you're failing — it's where you're being invited to grow.`
+        };
+      } else if (avg >= 4) {
+        return {
+          title: "Honest Assessment",
+          text: `You're seeing yourself clearly — not inflating, not deflating. That honesty is rare and valuable. Your pattern points to Level ${lowest.level + 1} (${levels[lowest.level].name}) as your current work. This isn't about fixing what's broken. It's about building what's next. And you don't have to do it alone.`
+        };
+      } else {
+        return {
+          title: "This Is Where It Begins",
+          text: "These scores take courage. Most people can't admit where they actually are — they inflate, they pretend, they look away. You didn't. That honesty is the first step of real transformation. You're not behind. You're exactly where the work begins. Start with Level 1 — your relationship with yourself. One small commitment, one day at a time. Everything else builds from there. And if you're ready, we can guide you."
+        };
+      }
+    }
+
+    function showResults() {
+      document.getElementById('assessment').classList.add('hidden');
+      document.getElementById('results').classList.remove('hidden');
+      
+      // Switch music
+      const bgMusic = document.getElementById('bgMusic');
+      const levelUpMusic = document.getElementById('levelUpMusic');
+      bgMusic.pause();
+      levelUpMusic.volume = 0.4;
+      levelUpMusic.play().catch(() => {});
+      
+      const lowest = findLowestLevel();
+      
+      // Score summary grid
+      const summary = document.getElementById('scoresSummary');
+      summary.innerHTML = '';
+      levels.forEach((level, i) => {
+        const score = scores[i];
+        const scoreClass = getScoreClass(score);
+        const isLowest = i === lowest.level;
+        const box = document.createElement('div');
+        box.className = `score-box ${isLowest ? 'lowest' : ''}`;
+        box.innerHTML = `
+          <div class="score-box-level">L${level.level}</div>
+          <div class="score-box-value ${scoreClass}">${score}</div>
+        `;
+        summary.appendChild(box);
+      });
+      
+      // Main insight
+      const mainInsight = generateMainInsight();
+      document.getElementById('mainInsightTitle').textContent = mainInsight.title;
+      document.getElementById('mainInsightText').textContent = mainInsight.text;
+      
+      // Pattern analysis
+      document.getElementById('patternAnalysis').textContent = generatePatternAnalysis();
+      
+      // Level breakdown
+      const breakdown = document.getElementById('levelBreakdown');
+      breakdown.innerHTML = '';
+      
+      levels.forEach((level, i) => {
+        const score = scores[i];
+        const scoreClass = getScoreClass(score);
+        const reflection = reflections[i];
+        const isLowest = i === lowest.level;
+        
+        let levelHtml = `
+          <div class="level-insight ${isLowest ? 'focus-level' : ''}">
+            <div class="level-insight-header">
+              <span class="level-insight-name">
+                Level ${level.level}: ${level.name}
+                ${isLowest ? '<span class="focus-badge">YOUR FOCUS</span>' : ''}
+              </span>
+              <span class="level-insight-score ${scoreClass}">${score}/10</span>
+            </div>
+            <p class="level-insight-text">${level.insights[score]}</p>
+        `;
+        
+        if (reflection) {
+          levelHtml += `
+            <div class="level-insight-reflection">
+              <p class="level-insight-reflection-label">You wrote:</p>
+              <p class="level-insight-reflection-text">"${reflection}"</p>
+            </div>
+          `;
+        }
+        
+        levelHtml += '</div>';
+        breakdown.innerHTML += levelHtml;
+      });
+      
+      window.scrollTo(0, 0);
+    }
+
+    function restart() {
+      currentLevel = 0;
+      scores = {};
+      reflections = {};
+      currentScore = null;
+      breakdownVisible = false;
+      localStorage.removeItem('levelsOfSelfProgress');
+      document.getElementById('levelBreakdown').classList.remove('show');
+      document.getElementById('breakdownToggle').textContent = 'Show details ↓';
+      document.getElementById('results').classList.add('hidden');
+      document.getElementById('startScreen').classList.remove('hidden');
+    }
+
+    // Initialize
+    renderProgressBar();
+    renderScoreButtons();
+    loadProgress();
+    
+    // Save progress to localStorage
+    function saveProgress() {
+      const progress = {
+        currentLevel,
+        scores,
+        reflections
+      };
+      localStorage.setItem('levelsOfSelfProgress', JSON.stringify(progress));
+    }
+    
+    // Load progress from localStorage
+    function loadProgress() {
+      const saved = localStorage.getItem('levelsOfSelfProgress');
+      if (saved) {
+        const progress = JSON.parse(saved);
+        if (Object.keys(progress.scores).length > 0 && Object.keys(progress.scores).length < 7) {
+          if (confirm('You have a saved assessment in progress. Would you like to continue where you left off?')) {
+            currentLevel = progress.currentLevel;
+            scores = progress.scores;
+            reflections = progress.reflections;
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('assessment').classList.remove('hidden');
+            updateDisplay();
+          } else {
+            localStorage.removeItem('levelsOfSelfProgress');
+          }
+        }
+      }
+    }
+    
+    // Generate text summary for sharing
+    function generateTextSummary() {
+      const avg = Object.values(scores).reduce((a, b) => a + b, 0) / 7;
+      const lowest = findLowestLevel();
+      
+      let summary = `🎯 My 7 Levels of Self Assessment\n\n`;
+      summary += `📊 Scores:\n`;
+      levels.forEach((level, i) => {
+        summary += `Level ${level.level} (${level.name}): ${scores[i]}/10\n`;
+      });
+      summary += `\n📍 Focus Area: Level ${lowest.level + 1} - ${levels[lowest.level].name}\n`;
+      summary += `📈 Average: ${avg.toFixed(1)}/10\n\n`;
+      summary += `Take the assessment: selfcheck.100levelup.com/assessment.html`;
+      
+      return summary;
+    }
+    
+    // Share results using native share or modal
+    function copyResults() {
+      const summary = generateTextSummary();
+      const shareUrl = 'https://selfcheck.100levelup.com/assessment.html';
+      const shareTitle = 'My 7 Levels of Self Assessment';
+      
+      // Try native share API first (mobile)
+      if (navigator.share) {
+        navigator.share({
+          title: shareTitle,
+          text: summary,
+          url: shareUrl
+        }).catch(() => {
+          // User cancelled or error - show modal instead
+          showShareModal(summary);
+        });
+      } else {
+        // Desktop - show share modal
+        showShareModal(summary);
+      }
+    }
+    
+    function showShareModal(summary) {
+      const shareUrl = encodeURIComponent('https://selfcheck.100levelup.com/assessment.html');
+      const shareText = encodeURIComponent(summary);
+      const shareTitle = encodeURIComponent('My 7 Levels of Self Assessment');
+      
+      // Create modal
+      const modal = document.createElement('div');
+      modal.id = 'shareModal';
+      modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 24px;
+      `;
+      
+      modal.innerHTML = `
+        <div style="background: #1e293b; border-radius: 16px; padding: 24px; max-width: 400px; width: 100%;">
+          <h3 style="color: #fbbf24; margin-bottom: 16px; font-size: 1.25rem;">Share Your Results</h3>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" style="background: #1877f2; color: white; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.85rem;">Facebook</a>
+            <a href="https://twitter.com/intent/tweet?text=${shareText}" target="_blank" style="background: #000; color: white; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.85rem;">X</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}" target="_blank" style="background: #0a66c2; color: white; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.85rem;">LinkedIn</a>
+            <a href="https://wa.me/?text=${shareText}" target="_blank" style="background: #25d366; color: white; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.85rem;">WhatsApp</a>
+            <a href="sms:?body=${shareText}" style="background: #34c759; color: white; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.85rem;">SMS</a>
+            <a href="mailto:?subject=${shareTitle}&body=${shareText}" style="background: #64748b; color: white; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.85rem;">Email</a>
+          </div>
+          <button onclick="copyToClipboard()" style="width: 100%; padding: 12px; background: #334155; border: 1px solid #475569; color: white; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 12px;">Copy to Clipboard</button>
+          <button onclick="closeShareModal()" style="width: 100%; padding: 12px; background: transparent; border: 1px solid #475569; color: #94a3b8; border-radius: 8px; font-weight: 600; cursor: pointer;">Close</button>
+        </div>
+      `;
+      
+      document.body.appendChild(modal);
+      
+      // Close on backdrop click
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeShareModal();
+      });
+    }
+    
+    function closeShareModal() {
+      const modal = document.getElementById('shareModal');
+      if (modal) modal.remove();
+    }
+    
+    function copyToClipboard() {
+      const summary = generateTextSummary();
+      navigator.clipboard.writeText(summary).then(() => {
+        closeShareModal();
+        const toast = document.getElementById('shareToast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+      }).catch(() => {
+        const textarea = document.createElement('textarea');
+        textarea.value = summary;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        closeShareModal();
+        const toast = document.getElementById('shareToast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+      });
+    }
+    
+    // Download results as PDF
+    function downloadResults() {
+      const avg = Object.values(scores).reduce((a, b) => a + b, 0) / 7;
+      const lowest = findLowestLevel();
+      const date = new Date().toLocaleDateString();
+      
+      // Create a printable HTML document
+      const printWindow = window.open('', '_blank');
+      
+      let scoresHtml = '';
+      levels.forEach((level, i) => {
+        const score = scores[i];
+        const isLowest = i === lowest.level;
+        scoresHtml += `
+          <div style="background: ${isLowest ? '#fef3c7' : '#f8fafc'}; border: ${isLowest ? '2px solid #f59e0b' : '1px solid #e2e8f0'}; border-radius: 8px; padding: 16px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="color: ${isLowest ? '#b45309' : '#334155'};">Level ${level.level}: ${level.name} ${isLowest ? '⭐ YOUR FOCUS' : ''}</strong>
+              <span style="font-weight: bold; color: #334155;">${score}/10</span>
+            </div>
+            <p style="color: #64748b; font-size: 14px; line-height: 1.6; margin: 0;">${level.insights[score]}</p>
+            ${reflections[i] ? `<p style="color: #94a3b8; font-style: italic; font-size: 13px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e2e8f0;">"${reflections[i]}"</p>` : ''}
+          </div>
+        `;
+      });
+      
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>7 Levels of Self Assessment - ${date}</title>
+          <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 40px; max-width: 800px; margin: 0 auto; color: #334155; }
+            h1 { color: #b45309; font-size: 28px; margin-bottom: 8px; }
+            .subtitle { color: #64748b; margin-bottom: 24px; }
+            .summary-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 24px; }
+            .summary-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 16px; }
+            .score-cell { background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; text-align: center; }
+            .score-cell.lowest { border: 2px solid #f59e0b; background: #fef3c7; }
+            .score-cell-label { font-size: 10px; color: #64748b; }
+            .score-cell-value { font-size: 18px; font-weight: bold; color: #334155; }
+            .insight-box { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 16px; margin-bottom: 24px; }
+            .insight-title { color: #b45309; font-weight: bold; margin-bottom: 8px; }
+            .distinction { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 16px; margin-top: 24px; }
+            .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #e2e8f0; color: #94a3b8; font-size: 12px; text-align: center; }
+            @media print { body { padding: 20px; } }
+          </style>
+        </head>
+        <body>
+          <h1>7 Levels of Self</h1>
+          <p class="subtitle">Assessment Results — ${date}</p>
+          
+          <div class="summary-box">
+            <div class="summary-grid">
+              ${levels.map((level, i) => `
+                <div class="score-cell ${i === lowest.level ? 'lowest' : ''}">
+                  <div class="score-cell-label">L${level.level}</div>
+                  <div class="score-cell-value">${scores[i]}</div>
+                </div>
+              `).join('')}
+            </div>
+            <p><strong>Average:</strong> ${avg.toFixed(1)}/10 | <strong>Focus Area:</strong> Level ${lowest.level + 1} - ${levels[lowest.level].name}</p>
+          </div>
+          
+          <div class="insight-box">
+            <p class="insight-title">${document.getElementById('mainInsightTitle').textContent}</p>
+            <p>${document.getElementById('mainInsightText').textContent}</p>
+          </div>
+          
+          <h2 style="font-size: 18px; margin-bottom: 16px; color: #334155;">Level by Level</h2>
+          ${scoresHtml}
+          
+          <div class="distinction">
+            <p><strong style="color: #0369a1;">Remember:</strong> <em>Acceptance</em> is acknowledging what is. <em>Agreement</em> is endorsing it. You can fully accept where you are without agreeing to stay there.</p>
+          </div>
+          
+          <div class="footer">
+            <p>levelsofself.com — A framework for clarity</p>
+          </div>
+          
+          <scr` + `ipt>
+            window.onload = function() {
+              window.print();
+              setTimeout(function() { window.close(); }, 500);
+            };
+          </scr` + `ipt>
+        </body>
+        </html>
+      `);
+      
+      printWindow.document.close();
+    }
+    
+    // Print results
+    function printResults() {
+      // Expand the breakdown before printing
+      const content = document.getElementById('levelBreakdown');
+      const wasHidden = !content.classList.contains('show');
+      if (wasHidden) {
+        content.classList.add('show');
+      }
+      
+      window.print();
+      
+      // Restore state after printing
+      if (wasHidden) {
+        setTimeout(() => content.classList.remove('show'), 100);
+      }
+    }
+    
+    // Audio toggle
+    let audioMuted = false;
+    function toggleAudio() {
+      audioMuted = !audioMuted;
+      const bgMusic = document.getElementById('bgMusic');
+      const levelUpMusic = document.getElementById('levelUpMusic');
+      const onIcon = document.getElementById('audioOnIcon');
+      const offIcon = document.getElementById('audioOffIcon');
+      
+      bgMusic.muted = audioMuted;
+      levelUpMusic.muted = audioMuted;
+      
+      if (audioMuted) {
+        onIcon.style.display = 'none';
+        offIcon.style.display = 'block';
+      } else {
+        onIcon.style.display = 'block';
+        offIcon.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
