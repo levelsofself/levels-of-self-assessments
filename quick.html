@@ -385,67 +385,6 @@
       font-style: normal;
       font-weight: 600;
     }
-    .coaching-tiers {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .coaching-tier {
-      background: rgba(0,0,0,0.3);
-      border: 1px solid #334155;
-      border-radius: 12px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .coaching-tier.featured {
-      background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(168, 85, 247, 0.1));
-      border-color: #475569;
-    }
-    .tier-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .tier-icon {
-      font-size: 24px;
-    }
-    .tier-name {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #e2e8f0;
-    }
-    .tier-desc {
-      font-size: 0.75rem;
-      color: #64748b;
-    }
-    .tier-price {
-      text-align: right;
-    }
-    .tier-amount {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fbbf24;
-    }
-    .tier-per {
-      font-size: 0.7rem;
-      color: #64748b;
-    }
-    .coaching-philosophy {
-      background: rgba(0,0,0,0.4);
-      border-left: 3px solid #fbbf24;
-      border-radius: 0 8px 8px 0;
-      padding: 14px 16px;
-      margin-bottom: 16px;
-    }
-    .coaching-philosophy p {
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      line-height: 1.6;
-      font-style: italic;
-    }
     .coaching-cta {
       display: block;
       width: 100%;
@@ -1270,19 +1209,6 @@
       const levelUpMusic = document.getElementById('levelUpMusic');
       levelUpMusic.pause();
       levelUpMusic.currentTime = 0;
-    }
-    
-    // Coaching tier selection
-    function selectCoachingTier(tier) {
-      const messages = {
-        global: "Hi Arthur, I just did the quick check-in and I'm ready to go deeper. I'm interested in coaching at the Global Rate.",
-        standard: "Hi Arthur, I just did the quick check-in and I'm ready to go deeper. I'm interested in coaching at the Standard Rate.",
-        abundance: "Hi Arthur, I just did the quick check-in and I'm ready to go deeper. I'm interested in coaching at the Abundance Rate to help expand this work."
-      };
-      const encodedMessage = encodeURIComponent(messages[tier]);
-      document.getElementById('coachingBtn').href = 'https://wa.me/+18184399770?text=' + encodedMessage;
-      document.querySelectorAll('.coaching-tier').forEach(t => t.classList.remove('featured'));
-      event.currentTarget.classList.add('featured');
     }
     
     // Download results as PDF
