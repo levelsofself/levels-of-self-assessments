@@ -332,7 +332,152 @@
     }
     .cta-link:hover {
       background: #d97706;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
+    .cta-link:active {
+      transform: translateY(-1px);
+    }
+    /* ========== COACHING OFFER STYLES ========== */
+    .coaching-offer {
+      background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .coaching-offer-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .coaching-offer-label {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #ec4899;
+      background: rgba(236, 72, 153, 0.15);
+      padding: 5px 12px;
+      border-radius: 16px;
+      margin-bottom: 12px;
+    }
+    .coaching-offer-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fbbf24;
+      margin-bottom: 6px;
+    }
+    .coaching-offer-subtitle {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    .coaching-offer-desc {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .coaching-offer-desc em {
+      color: #ec4899;
+      font-style: normal;
+      font-weight: 600;
+    }
+    .coaching-tiers {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .coaching-tier {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .coaching-tier.featured {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(168, 85, 247, 0.1));
+      border-color: #475569;
+    }
+    .tier-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .tier-icon {
+      font-size: 24px;
+    }
+    .tier-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+    .tier-desc {
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+    .tier-price {
+      text-align: right;
+    }
+    .tier-amount {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fbbf24;
+    }
+    .tier-per {
+      font-size: 0.7rem;
+      color: #64748b;
+    }
+    .coaching-philosophy {
+      background: rgba(0,0,0,0.4);
+      border-left: 3px solid #fbbf24;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    .coaching-philosophy p {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .coaching-cta {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #f97316, #ec4899);
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .coaching-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(236, 72, 153, 0.4);
+    }
+    .coaching-cta:active {
+      transform: translateY(-1px);
+    }
+    .coaching-note {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+    .coaching-note strong {
+      color: #94a3b8;
+    }
+    /* ========== END COACHING OFFER STYLES ========== */
     .secondary-links {
       margin-top: 16px;
       display: flex;
@@ -377,6 +522,11 @@
     .connect-link:hover {
       color: #fbbf24;
       border-color: #fbbf24;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .connect-link:active {
+      transform: translateY(-1px);
     }
     .center {
       text-align: center;
@@ -456,6 +606,11 @@
     .share-btn:hover {
       color: #fbbf24;
       border-color: #fbbf24;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .share-btn:active {
+      transform: translateY(-1px);
     }
     .share-btn svg {
       width: 16px;
@@ -656,6 +811,24 @@
         <p class="cta-text">Play Level Up — apply the 7 Levels in real scenarios.</p>
         <a href="https://100levelup.com" target="_blank" class="cta-link" style="background: #22c55e;">Play Level Up</a>
       </div>
+      
+      <!-- ========== COACHING OFFER ========== -->
+      <div class="coaching-offer">
+        <div class="coaching-offer-header">
+          <span class="coaching-offer-label">Ready to Go Deeper?</span>
+        </div>
+        <div style="text-align:center;">
+          <img src="https://100levelup.com/arthur.jpg" alt="Arthur Palyan" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #ec4899;margin-bottom:14px;box-shadow:0 4px 20px rgba(236,72,153,0.3);">
+          <h3 class="coaching-offer-title">Integrate with Arthur</h3>
+          <p class="coaching-offer-subtitle">1-on-1 Integration</p>
+        </div>
+        <p class="coaching-offer-desc" style="font-size:1.1rem;margin-bottom:24px;">
+          <strong style="color:#fbbf24;">$500</strong>/session
+        </p>
+        <a href="https://wa.me/+18184399770?text=Hi%20Arthur%2C%20I%20just%20did%20the%20quick%20check-in%20and%20I%27m%20ready%20to%20go%20deeper.%20I%27m%20interested%20in%20integration." class="coaching-cta" id="coachingBtn">💬 Book a Session</a>
+        <p class="coaching-note">If you need a discount, just ask.</p>
+      </div>
+      <!-- ========== END COACHING OFFER ========== -->
       
       <!-- Community CTA -->
       <div class="cta-section">
@@ -1106,6 +1279,19 @@
       const levelUpMusic = document.getElementById('levelUpMusic');
       levelUpMusic.pause();
       levelUpMusic.currentTime = 0;
+    }
+    
+    // Coaching tier selection
+    function selectCoachingTier(tier) {
+      const messages = {
+        global: "Hi Arthur, I just did the quick check-in and I'm ready to go deeper. I'm interested in coaching at the Global Rate.",
+        standard: "Hi Arthur, I just did the quick check-in and I'm ready to go deeper. I'm interested in coaching at the Standard Rate.",
+        abundance: "Hi Arthur, I just did the quick check-in and I'm ready to go deeper. I'm interested in coaching at the Abundance Rate to help expand this work."
+      };
+      const encodedMessage = encodeURIComponent(messages[tier]);
+      document.getElementById('coachingBtn').href = 'https://wa.me/+18184399770?text=' + encodedMessage;
+      document.querySelectorAll('.coaching-tier').forEach(t => t.classList.remove('featured'));
+      event.currentTarget.classList.add('featured');
     }
     
     // Download results as PDF
