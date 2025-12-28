@@ -389,6 +389,76 @@
     }
     .cta-link:hover {
       background: #d97706;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .cta-link:active {
+      transform: translateY(-1px);
+    }
+    /* Coaching Offer */
+    .coaching-offer {
+      background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .coaching-offer-label {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #ec4899;
+      background: rgba(236, 72, 153, 0.15);
+      padding: 5px 12px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+    }
+    .coaching-offer-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fbbf24;
+      margin-bottom: 6px;
+    }
+    .coaching-offer-subtitle {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+    .coaching-offer-price {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin-bottom: 24px;
+    }
+    .coaching-cta {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #f97316, #ec4899);
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .coaching-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(236, 72, 153, 0.4);
+    }
+    .coaching-cta:active {
+      transform: translateY(-1px);
+    }
+    .coaching-note {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #64748b;
     }
     .insight-section {
       margin-bottom: 24px;
@@ -526,6 +596,11 @@
     .action-btn:hover {
       background: #334155;
       border-color: #f59e0b;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .action-btn:active {
+      transform: translateY(-1px);
     }
     .action-btn svg {
       width: 18px;
@@ -854,7 +929,7 @@
         <span class="level-breakdown-toggle" id="breakdownToggle">
           <span id="toggleText">View Details</span>
           <svg id="toggleIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="transition: transform 0.2s;">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </span>
       </div>
@@ -874,20 +949,22 @@
         <a href="https://100levelup.com" target="_blank" class="cta-link" style="background: #22c55e;">Play Level Up</a>
       </div>
 
+      <!-- Coaching Offer -->
+      <div class="coaching-offer">
+        <span class="coaching-offer-label">Ready to Go Deeper?</span>
+        <img src="https://100levelup.com/arthur.jpg" alt="Arthur Palyan" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #ec4899;margin-bottom:14px;box-shadow:0 4px 20px rgba(236,72,153,0.3);">
+        <h3 class="coaching-offer-title">Integrate with Arthur</h3>
+        <p class="coaching-offer-subtitle">1-on-1 Integration</p>
+        <p class="coaching-offer-price"><strong style="color:#fbbf24;">$500</strong>/session</p>
+        <a href="https://wa.me/+18184399770?text=Hi%20Arthur%2C%20I%20just%20completed%20the%20full%20assessment%20and%20I%27m%20ready%20to%20go%20deeper.%20I%27m%20interested%20in%20integration." class="coaching-cta">💬 Book a Session</a>
+        <p class="coaching-note">If you need a discount, just ask.</p>
+      </div>
+
       <!-- Primary CTA -->
       <div class="cta-section">
         <h3 class="cta-title">You don't have to do this alone.</h3>
         <p class="cta-text">Join the free monthly community session. Real people. Real conversations. No judgment, no fluff — just the work that actually changes things.</p>
         <a href="https://www.levelsofself.com/service-page/free-mastermind-english" target="_blank" class="cta-link">Join the Community</a>
-      </div>
-      
-      <!-- Connect -->
-      <div style="background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 20px; text-align: center;">
-        <p style="color: #e2e8f0; font-size: 1rem; margin-bottom: 12px;">Questions? Reach out directly.</p>
-        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-          <a href="https://wa.me/18184399770" target="_blank" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem; padding: 8px 16px; border: 1px solid #334155; border-radius: 6px; transition: all 0.2s;">WhatsApp</a>
-          <a href="https://www.facebook.com/people/Art-Pal/1153951241/" target="_blank" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem; padding: 8px 16px; border: 1px solid #334155; border-radius: 6px; transition: all 0.2s;">Facebook</a>
-        </div>
       </div>
       
       <div class="center">
@@ -1127,7 +1204,7 @@
       if (breakdownVisible) {
         content.classList.add('show');
         toggleText.textContent = 'Hide Details';
-        toggleIcon.style.transform = 'rotate(180deg)';
+        toggleIcon.style.transform = 'rotate(90deg)';
       } else {
         content.classList.remove('show');
         toggleText.textContent = 'View Details';
